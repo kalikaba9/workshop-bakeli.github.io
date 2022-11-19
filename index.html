@@ -25,7 +25,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mb-3">
-                    Email: <input class="form-control w-75 mx-auto text-center" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Saisir votre email" value="">
+                    Email: <input class="form-control w-75 mx-auto text-center" type="email" id="validationServer" aria-describedby="emailHelp" placeholder="kalika@gmail.com" value="" required>
                 </div>
             </div>
             <div class="row">
@@ -176,6 +176,40 @@
     </div>
 <br/>
 
+<div class="container">
+    <h1 class="text-center">Exercice 6</h1> 
+    <div class="card text-center">
+        <div class="card-header bg-warning">
+         <h1>Afficher un tableau de personnes</h1>
+        </div>
+        <div class="card-body bg-white">
+            
+                <table class="table table-dark table-striped" id="tableau">
+                    <thead>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Age</th>
+                        <th>Note</th>
+                    </thead>
+                    <tbody id="app1" >
+                       
+                        
+                    </tbody>
+                </table>
+                <div id="div1" style="margin-top: 20px;"></div>
+            <br>
+            <div id="app2"></div><br>
+            <div id="app3"></div><br>
+            <div id="app4"></div><br>
+            <div id="app5"></div>
+            <br>
+        
+           
+        </div> 
+      </div>
+    </div>
+<br/>
+
 <script>
 
 function Inscription() {
@@ -288,6 +322,98 @@ function Division() {
 //     parent.removeChild(y);
     
 // }
+
+
+
+
+const personne=[{nom:'Samb',prenom:'Mouhamed Moustapha',age:27,note:20},
+                    {nom:'Sow',prenom:'El Hadji',age:38,note:15},
+                    {nom:'Ndoye',prenom:'Marième',age:35,note:12},
+                    {nom:'Ba',prenom:'Kalika',age:29,note:19},
+                    {nom:'Dia',prenom:'Amadou Junior',age:37,note:16},
+                    {nom:'Diatta',prenom:'Christ',age:38,note:12},
+                    {nom:'Bilal',prenom:'Aïchatou',age:27,note:11},
+                    {nom:'Diop',prenom:'Mountaga',age:23,note:13},
+                    {nom:'Badji',prenom:'Alkaly',age:17,note:16},
+                    {nom:'Barry',prenom:'Mahmoud',age:30,note:14}
+                ];
+
+         
+
+const tbody = document.getElementById('app1');
+
+
+personne.map((element)=>{
+    const j = Object.values(element);
+    let tr = document.createElement('tr');
+    tbody.appendChild(tr);
+    
+    console.log(j);
+    for (let i = 0; i < j.length; i++) {
+     
+        let td = document.createElement('td');
+                          tr.appendChild(td);
+
+
+        td.innerText=j[i];
+       }
+
+    tableau = document.getElementById("tableau");
+    const ligne = tableau.getElementsByTagName("tr");
+           
+    })
+   
+
+
+//    pour le maximum
+    var max = 0;
+    for (let index = 0; index < personne.length; index++) {
+
+        if (personne[index].age > max)
+        {
+           max = personne[index].age;
+            document.getElementById('app2').innerText=
+            personne[index].nom+' '+personne[index].prenom+
+            " est le plus agée avec " + personne[index].age+' ans';
+        }
+    }
+
+    var max = 0;
+    for (let index = 0; index < personne.length; index++) {
+
+        if (personne[index].note > max)
+        {
+           max = personne[index].note;
+            document.getElementById('app3').innerText=
+            personne[index].nom+' '+personne[index].prenom+
+            " a la plus grande note avec " + personne[index].note+' sur 20';
+        }
+    }
+
+
+    // pour le minimum
+
+    var al = personne.length;
+    minimum = personne[al-1].age;
+    while (al--){
+        if(personne[al].age < minimum){
+            minimum = personne[al].age;
+            document.getElementById('app4').innerText=
+            personne[al].nom+' '+personne[al].prenom+
+            " est le plus jeune avec " + personne[al].age+' ans';
+        }
+    }
+
+    var al = personne.length;
+    minimum = personne[al-1].note;
+    while (al--){
+        if(personne[al].note < minimum){
+            minimum = personne[al].note;
+            document.getElementById('app5').innerText=
+            personne[al].nom+' '+personne[al].prenom+
+            " a la plus faible note " + personne[al].note+' sur 20';
+        }
+    }
 
 
 </script>
